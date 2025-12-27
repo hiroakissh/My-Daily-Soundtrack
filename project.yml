@@ -1,0 +1,46 @@
+name: MyDailySoundtrack
+options:
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+  bundleIdPrefix: com.hiroaki
+configs:
+  Debug: debug
+  Release: release
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+    IPHONEOS_DEPLOYMENT_TARGET: 26.0
+    PRODUCT_BUNDLE_IDENTIFIER: com.hiroaki.MyDailySoundtrack
+    DEVELOPMENT_TEAM: ""
+packages:
+  StateObservationKit:
+    url: https://github.com/hiroakissh/StateObservationKit
+    from: 0.1.0
+targets:
+  MyDailySoundtrack:
+    type: application
+    platform: iOS
+    sources:
+      - path: App/Sources
+    resources:
+      - path: Resources
+        optional: true
+    settings:
+      base:
+        INFOPLIST_FILE: App/Supporting/Info.plist
+        PRODUCT_NAME: MyDailySoundtrack
+        SWIFT_VERSION: 6.0
+    dependencies:
+      - package: StateObservationKit
+  MyDailySoundtrackTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: App/Tests
+    settings:
+      base:
+        INFOPLIST_FILE: App/Supporting/Tests.plist
+    dependencies:
+      - target: MyDailySoundtrack
