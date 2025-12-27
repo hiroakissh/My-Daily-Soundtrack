@@ -47,7 +47,7 @@
 
 7. **ビルド設定**
    - iOS Deployment Target: 26.0。
-   - Swift 言語バージョン: Swift 5.10 以上（Xcode 26 標準）。
+- Swift 言語バージョン: Swift 6.0 以上（Xcode 26 標準）。
    - Debug で `OTHER_SWIFT_FLAGS` に `-warnings-as-errors` を入れる場合はチーム方針に合わせる。
 
 8. **ラン構成**

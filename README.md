@@ -4,7 +4,7 @@
 
 ## 環境構築
 
-- macOS / Xcode 26 以上 / Swift 5.10 以上
+- macOS / Xcode 26 以上 / Swift 6.0 以上
 - デバイス検証のため Xcode にサインインした Apple Developer アカウント
 - Homebrew（任意。`swiftlint` などツール管理用）
 - リポジトリをクローン後、SwiftUI + Swift Package Manager で Xcode プロジェクトを作成
