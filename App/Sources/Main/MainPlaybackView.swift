@@ -177,6 +177,7 @@ struct MainPlaybackView: View {
     MainPlaybackView(
         playbackStore: PlaybackStore(),
         geoTagStore: GeoTagStore(),
+        errorStore: ErrorStore(),
         onTogglePlay: {},
         onRetry: {}
     )
