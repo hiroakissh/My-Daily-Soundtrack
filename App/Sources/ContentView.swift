@@ -1,18 +1,22 @@
 import SwiftUI
-import StateObservationKit
 
 struct ContentView: View {
+    @StateObject private var onboardingStore = OnboardingStore(slides: OnboardingSlide.defaultSlides)
+
     var body: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "waveform.path")
-                .font(.system(size: 48, weight: .medium))
-            Text("My Daily Soundtrack")
-                .font(.title2.bold())
-            Text("サウンドスケープの骨組みだけを含むスターター。")
-                .font(.callout)
-                .foregroundStyle(.secondary)
+        Group {
+            if onboardingStore.isCompleted {
+                PermissionGuidePlaceholder()
+            } else {
+                OnboardingView(
+                    store: onboardingStore,
+                    onComplete: {
+                        // TODO: Navigate to permission guide once implemented.
+                    }
+                )
+            }
         }
-        .padding()
+        .animation(.easeInOut(duration: 0.25), value: onboardingStore.isCompleted)
     }
 }
 
