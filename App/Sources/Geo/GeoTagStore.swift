@@ -12,6 +12,9 @@ enum GeoTag: String, CaseIterable {
 
 final class GeoTagStore: ObservableObject {
     @Published private(set) var currentTag: GeoTag = .urban
+    var tagPublisher: AnyPublisher<GeoTag, Never> {
+        $currentTag.eraseToAnyPublisher()
+    }
 
     private var provider: (any GeoTagProviding)?
     private var cancellables = Set<AnyCancellable>()
