@@ -1,12 +1,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var playbackStore = PlaybackStore()
     @StateObject private var geoTagStore: GeoTagStore = {
         let provider = MockGeoTagProvider()
         let store = GeoTagStore(provider: provider)
         return store
     }()
+    @StateObject private var playbackStore = PlaybackStore(
+        renderer: StubAudioRenderer()
+    )
     @StateObject private var errorStore = ErrorStore()
     #if DEBUG
     @State private var showDebugOverlay = false
@@ -39,6 +41,7 @@ struct ContentView: View {
         )
         #endif
         .task {
+            playbackStore.bindTagPublisher(geoTagStore.tagPublisher)
             _ = await geoTagStore.start()
         }
         .onChange(of: playbackStore.state) { newValue in
