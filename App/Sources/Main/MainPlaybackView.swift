@@ -175,8 +175,9 @@ struct MainPlaybackView: View {
 
 #Preview("Main Playback") {
     MainPlaybackView(
-        playbackStore: PlaybackStore(),
+        playbackStore: PlaybackStore(renderer: StubAudioRenderer()),
         geoTagStore: GeoTagStore(),
+        errorStore: ErrorStore(),
         onTogglePlay: {},
         onRetry: {}
     )
