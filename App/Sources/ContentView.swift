@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var playbackStore = PlaybackStore()
     @StateObject private var geoTagStore = GeoTagStore()
+    @StateObject private var errorStore = ErrorStore()
     #if DEBUG
     @State private var showDebugOverlay = false
     #endif
@@ -12,6 +13,7 @@ struct ContentView: View {
             MainPlaybackView(
                 playbackStore: playbackStore,
                 geoTagStore: geoTagStore,
+                errorStore: errorStore,
                 onTogglePlay: togglePlay,
                 onRetry: retry
             )
@@ -32,12 +34,27 @@ struct ContentView: View {
                 }
         )
         #endif
+        .onChange(of: playbackStore.state) { newValue in
+            switch newValue {
+            case .error(let message):
+                errorStore.present(kind: .audio, message: message)
+            case .playing:
+                if errorStore.state.isVisible {
+                    errorStore.resolve()
+                }
+            default:
+                break
+            }
+        }
     }
 
     private func togglePlay() {
         switch playbackStore.state {
         case .playing:
             playbackStore.pause()
+        case .error:
+            errorStore.present(kind: .audio)
+            retry()
         default:
             playbackStore.start()
         }
@@ -45,6 +62,9 @@ struct ContentView: View {
 
     private func retry() {
         playbackStore.start()
+        if errorStore.state.isVisible {
+            errorStore.resolve()
+        }
     }
 
     #if DEBUG
@@ -54,6 +74,10 @@ struct ContentView: View {
                 .font(.headline)
             Text("GeoTag: \(geoTagStore.currentTag.rawValue)")
             Text("Playback: \(playbackStore.state.label)")
+            Button("Simulate Error") {
+                playbackStore.fail(message: "サンプルエラー")
+            }
+            .buttonStyle(.bordered)
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
