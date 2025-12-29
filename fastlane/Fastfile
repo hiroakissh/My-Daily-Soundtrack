@@ -1,0 +1,8 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Placeholder lane for CI (build + tests)"
+  lane :ci do
+    UI.message("fastlane CI placeholder - integrate xcodebuild later")
+  end
+end

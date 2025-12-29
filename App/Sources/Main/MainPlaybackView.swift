@@ -3,6 +3,7 @@ import SwiftUI
 struct MainPlaybackView: View {
     @ObservedObject var playbackStore: PlaybackStore
     @ObservedObject var geoTagStore: GeoTagStore
+    @ObservedObject var errorStore: ErrorStore
     var onTogglePlay: () -> Void = {}
     var onRetry: () -> Void = {}
 
@@ -31,6 +32,19 @@ struct MainPlaybackView: View {
             }
             .padding(.horizontal, 28)
             .padding(.vertical, 36)
+            if errorStore.state.isVisible {
+                ErrorModalView(
+                    store: errorStore,
+                    onPrimary: {
+                        errorStore.beginRetry()
+                        onRetry()
+                    },
+                    onSecondary: {
+                        errorStore.resolve()
+                    }
+                )
+                .transition(.opacity)
+            }
         }
     }
 
@@ -161,8 +175,9 @@ struct MainPlaybackView: View {
 
 #Preview("Main Playback") {
     MainPlaybackView(
-        playbackStore: PlaybackStore(),
+        playbackStore: PlaybackStore(renderer: StubAudioRenderer()),
         geoTagStore: GeoTagStore(),
+        errorStore: ErrorStore(),
         onTogglePlay: {},
         onRetry: {}
     )
