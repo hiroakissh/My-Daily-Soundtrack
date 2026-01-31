@@ -39,12 +39,12 @@ final class SoundtrackStore {
             for await snapshot in contextAggregator.start() {
                 let sceneEvaluation = sceneClassifier.update(context: snapshot, now: snapshot.timestamp)
                 let plan = scorePlanner.plan(scene: sceneEvaluation.current, context: snapshot, now: snapshot.timestamp)
-                let openingTriggered = openingDirector.beginIfNeeded(now: snapshot.timestamp, context: snapshot)
+                openingDirector.beginIfNeeded(now: snapshot.timestamp, context: snapshot)
 
                 self.context = snapshot
                 self.scene = sceneEvaluation
                 self.scorePlan = plan
-                self.isOpeningActive = openingTriggered
+                self.isOpeningActive = openingDirector.isOpeningInProgress(now: snapshot.timestamp)
                 self.themeSeed = openingDirector.themeSeed
             }
         }

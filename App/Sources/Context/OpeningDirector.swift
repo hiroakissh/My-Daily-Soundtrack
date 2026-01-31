@@ -25,6 +25,10 @@ final class OpeningDirector {
         let dayString = dayIdentifier(for: now)
         let storedDay = userDefaults.string(forKey: dayKey)
 
+        if isOpeningInProgress(now: now) {
+            return true
+        }
+
         if storedDay == dayString, let themeSeed {
             self.themeSeed = themeSeed
             isOpeningActive = false
@@ -52,6 +56,15 @@ final class OpeningDirector {
 
     func skip() {
         finish()
+    }
+
+    func isOpeningInProgress(now: Date = Date()) -> Bool {
+        guard isOpeningActive, let openingStartedAt else { return false }
+        if now.timeIntervalSince(openingStartedAt) <= openingDuration {
+            return true
+        }
+        isOpeningActive = false
+        return false
     }
 
     private func dayIdentifier(for date: Date) -> String {
