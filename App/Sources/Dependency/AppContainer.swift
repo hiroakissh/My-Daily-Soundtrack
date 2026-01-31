@@ -6,8 +6,8 @@ struct AppContainer {
 
     static func live() -> AppContainer {
         AppContainer(
-            geoTagProvider: MockGeoTagProvider(),
-            audioRenderer: StubAudioRenderer()
+            geoTagProvider: CoreLocationGeoTagProvider(),
+            audioRenderer: SimpleAudioRenderer()
         )
     }
 
