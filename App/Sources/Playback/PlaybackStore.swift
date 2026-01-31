@@ -59,8 +59,10 @@ final class PlaybackStore: ObservableObject {
             beginPlayback()
         case .playing:
             pausePlayback()
-        case .loading, .error:
+        case .loading:
             break
+        case .error:
+            beginPlayback()
         }
     }
 
@@ -78,9 +80,14 @@ final class PlaybackStore: ObservableObject {
         state = .loading
         playbackTask?.cancel()
         playbackTask = Task { [weak self] in
-            try? await Task.sleep(for: .milliseconds(350))
+            do {
+                try await Task.sleep(for: .milliseconds(350))
+            } catch {
+                return
+            }
+            if Task.isCancelled { return }
             await MainActor.run {
-                guard let self else { return }
+                guard let self, self.state == .loading else { return }
                 self.audioRenderer.start()
                 if let tag = self.currentTag {
                     self.audioRenderer.apply(tag: tag, fade: .default)
