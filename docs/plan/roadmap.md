@@ -22,6 +22,7 @@
 - `feature/infra-corelocation` … CoreLocation 実装（権限ハンドリング、簡易タグ算出への接続）
 - `feature/infra-coremotion` … CoreMotion 実装（歩行/走行判定、ケイデンス算出）
 - `feature/infra-weather` … WeatherKit または外部 API クライアントの実装（最初はモック可）
+  - 具体的な分割計画は `docs/plan/infra-providers.md` を参照
 
 ## オーディオ/ビジュアル
 - `feature/audio-engine-setup` … AVAudioEngine ベースのミキサー/レイヤー構成、常駐レイヤーとフェード
