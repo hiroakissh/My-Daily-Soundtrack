@@ -22,7 +22,7 @@ final class ScorePlannerTests: XCTestCase {
 
         XCTAssertGreaterThan(initialPlan.level(for: .beat), 0)
         XCTAssertEqual(fadedPlan.level(for: .beat), 0, accuracy: 0.01)
-        XCTAssertGreaterThan(fadedPlan.level(for: .pad), initialPlan.level(for: .pad))
+        XCTAssertEqual(fadedPlan.level(for: .pad), initialPlan.level(for: .pad), accuracy: 0.01)
     }
 
     func testSceneTransitionInterpolatesPlans() {
