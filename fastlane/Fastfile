@@ -1,0 +1,15 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Run CI tests"
+  lane :ci do
+    derived_data = "DerivedData"
+    scan(
+      scheme: "MyDailySoundtrack",
+      clean: true,
+      derived_data_path: derived_data,
+      cloned_source_packages_path: File.join(derived_data, "SourcePackages"),
+      devices: ["iPhone 15"]
+    )
+  end
+end
