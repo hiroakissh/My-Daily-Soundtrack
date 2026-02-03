@@ -5,11 +5,13 @@ platform :ios do
   lane :ci do
     derived_data = "DerivedData"
     scan(
+      project: "MyDailySoundtrack.xcodeproj",
       scheme: "MyDailySoundtrack",
       clean: true,
       derived_data_path: derived_data,
       cloned_source_packages_path: File.join(derived_data, "SourcePackages"),
-      devices: ["iPhone 15"]
+      devices: ["iPhone 15"],
+      xcargs: "IPHONEOS_DEPLOYMENT_TARGET=17.0"
     )
   end
 end
