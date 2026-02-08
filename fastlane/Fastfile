@@ -4,13 +4,14 @@ platform :ios do
   desc "Run CI tests"
   lane :ci do
     derived_data = "DerivedData"
+    simulator_name = ENV.fetch("SIMULATOR_NAME", "iPhone 14")
     scan(
       project: "MyDailySoundtrack.xcodeproj",
       scheme: "MyDailySoundtrack",
       clean: true,
       derived_data_path: derived_data,
       cloned_source_packages_path: File.join(derived_data, "SourcePackages"),
-      destination: "platform=iOS Simulator,name=iPhone 15,OS=latest",
+      destination: "platform=iOS Simulator,name=#{simulator_name},OS=latest",
       xcargs: "IPHONEOS_DEPLOYMENT_TARGET=17.0 IPHONEOS_DEPLOYMENT_TARGET[sdk=iphonesimulator*]=17.0"
     )
   end
