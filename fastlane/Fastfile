@@ -11,7 +11,7 @@ platform :ios do
       derived_data_path: derived_data,
       cloned_source_packages_path: File.join(derived_data, "SourcePackages"),
       destination: "platform=iOS Simulator,name=iPhone 15,OS=latest",
-      xcargs: "IPHONEOS_DEPLOYMENT_TARGET=17.0"
+      xcargs: "IPHONEOS_DEPLOYMENT_TARGET=17.0 IPHONEOS_DEPLOYMENT_TARGET[sdk=iphonesimulator*]=17.0"
     )
   end
 end
