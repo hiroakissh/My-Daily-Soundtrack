@@ -1,0 +1,24 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Run CI tests"
+  lane :ci do
+    derived_data = "DerivedData"
+    simulator_name = ENV.fetch("SIMULATOR_NAME", "iPhone 15")
+    simulator_udid = ENV["SIMULATOR_UDID"]
+    destination = if simulator_udid&.strip.to_s.empty?
+      "platform=iOS Simulator,name=#{simulator_name}"
+    else
+      "platform=iOS Simulator,id=#{simulator_udid}"
+    end
+
+    scan(
+      project: "MyDailySoundtrack.xcodeproj",
+      scheme: "MyDailySoundtrack",
+      clean: true,
+      derived_data_path: derived_data,
+      cloned_source_packages_path: File.join(derived_data, "SourcePackages"),
+      destination: destination
+    )
+  end
+end

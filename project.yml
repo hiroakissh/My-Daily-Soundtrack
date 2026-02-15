@@ -1,7 +1,7 @@
 name: MyDailySoundtrack
 options:
   deploymentTarget:
-    iOS: "26.0"
+    iOS: "17.0"
   createIntermediateGroups: true
   groupSortPosition: top
   bundleIdPrefix: com.hiroaki
@@ -11,7 +11,7 @@ configs:
 settings:
   base:
     SWIFT_VERSION: 6.0
-    IPHONEOS_DEPLOYMENT_TARGET: 26.0
+    IPHONEOS_DEPLOYMENT_TARGET: 17.0
     PRODUCT_BUNDLE_IDENTIFIER: com.hiroaki.MyDailySoundtrack
     DEVELOPMENT_TEAM: ""
 packages:
