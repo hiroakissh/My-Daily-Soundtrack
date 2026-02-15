@@ -4,7 +4,7 @@ import SwiftUI
 import UIKit
 #endif
 
-enum PermissionStatus: Equatable {
+enum PermissionStatus: Equatable, Sendable {
     case awaitingConsent
     case requesting
     case granted
@@ -12,11 +12,12 @@ enum PermissionStatus: Equatable {
     case restricted
 }
 
+@MainActor
 final class PermissionStore: ObservableObject {
     @Published private(set) var status: PermissionStatus = .awaitingConsent
 
-    typealias RequestHandler = () async -> PermissionStatus
-    typealias OpenSettingsHandler = () -> Void
+    typealias RequestHandler = @Sendable () async -> PermissionStatus
+    typealias OpenSettingsHandler = @MainActor @Sendable () -> Void
 
     private let requestHandler: RequestHandler
     private let openSettingsHandler: OpenSettingsHandler
@@ -29,7 +30,6 @@ final class PermissionStore: ObservableObject {
         self.openSettingsHandler = openSettingsHandler
     }
 
-    @MainActor
     func requestPermission() {
         guard status != .requesting else { return }
         status = .requesting

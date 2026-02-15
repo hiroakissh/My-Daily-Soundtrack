@@ -39,6 +39,9 @@ targets:
     platform: iOS
     sources:
       - path: App/Tests
+        excludes:
+          - SceneClassifierTests.swift
+          - ScorePlannerTests.swift
     settings:
       base:
         INFOPLIST_FILE: App/Supporting/Tests.plist

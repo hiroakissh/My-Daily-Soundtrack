@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DD6468306FA5145D3D6DB3C /* OnboardingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A7F5FC35C4561CD39593CB /* OnboardingStore.swift */; };
+		338646F1F6C134E91A685BAD /* DebugOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEBAB3CB8DC6B7BA67D16E7 /* DebugOverlayView.swift */; };
 		3689D47F69BEB4835908C7AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D695281961CFA51FBC5B2 /* ContentView.swift */; };
 		6D536E2192A344AAC54F74C5 /* MyDailySoundtrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631CF5A7D2F2394CD6F82D8 /* MyDailySoundtrackApp.swift */; };
+		7C621B324C672CDEF309933C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957E0D5A871A913A445886 /* OnboardingView.swift */; };
 		7C719922E048FCC6AFBE6B96 /* StateObservationKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7E5E716BF574F6CA56F0E785 /* StateObservationKit */; };
+		99E35A137C43E4ACE0A28ED5 /* PermissionGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208350171A6C99472AAE49A4 /* PermissionGuideView.swift */; };
+		C62E7489EFCEA73D4746969B /* PermissionGuidePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D490A5C5D6EE9A974993C146 /* PermissionGuidePlaceholder.swift */; };
 		CAD2AD3F03D81E6C059F3D83 /* MyDailySoundtrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8666213CD1D05EAFB833E62 /* MyDailySoundtrackTests.swift */; };
+		FD54541FB8178C1E4BF6DB61 /* PermissionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4037FA1072ED5590798D675C /* PermissionStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,9 +30,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01957E0D5A871A913A445886 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		208350171A6C99472AAE49A4 /* PermissionGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionGuideView.swift; sourceTree = "<group>"; };
 		310D695281961CFA51FBC5B2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4037FA1072ED5590798D675C /* PermissionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionStore.swift; sourceTree = "<group>"; };
+		6CEBAB3CB8DC6B7BA67D16E7 /* DebugOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugOverlayView.swift; sourceTree = "<group>"; };
 		88CF462AFDA4A2C59EF454BF /* MyDailySoundtrackTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MyDailySoundtrackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D490A5C5D6EE9A974993C146 /* PermissionGuidePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionGuidePlaceholder.swift; sourceTree = "<group>"; };
 		D631CF5A7D2F2394CD6F82D8 /* MyDailySoundtrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDailySoundtrackApp.swift; sourceTree = "<group>"; };
+		D7A7F5FC35C4561CD39593CB /* OnboardingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStore.swift; sourceTree = "<group>"; };
 		E8666213CD1D05EAFB833E62 /* MyDailySoundtrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDailySoundtrackTests.swift; sourceTree = "<group>"; };
 		EBBC36E646E3E1D97F177964 /* MyDailySoundtrack.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MyDailySoundtrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -43,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C59E2CF71988BE0DAD62A0F /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				208350171A6C99472AAE49A4 /* PermissionGuideView.swift */,
+				4037FA1072ED5590798D675C /* PermissionStore.swift */,
+			);
+			path = Permission;
+			sourceTree = "<group>";
+		};
 		918A7D0C299FDAFA5AD4B083 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +73,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9DC1513ED2CA4708C80CD388 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				6CEBAB3CB8DC6B7BA67D16E7 /* DebugOverlayView.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
 		B785E3E121D70E07F2BEECC3 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +88,15 @@
 				C88300419FF6CD6AD9EF9B05 /* Tests */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		C2AB07BE3C29572201A5E475 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D7A7F5FC35C4561CD39593CB /* OnboardingStore.swift */,
+				01957E0D5A871A913A445886 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		C88300419FF6CD6AD9EF9B05 /* Tests */ = {
@@ -80,8 +118,12 @@
 		F3A0FD1DEE763B14FB28AAE4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9DC1513ED2CA4708C80CD388 /* Debug */,
+				C2AB07BE3C29572201A5E475 /* Onboarding */,
+				2C59E2CF71988BE0DAD62A0F /* Permission */,
 				310D695281961CFA51FBC5B2 /* ContentView.swift */,
 				D631CF5A7D2F2394CD6F82D8 /* MyDailySoundtrackApp.swift */,
+				D490A5C5D6EE9A974993C146 /* PermissionGuidePlaceholder.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -176,7 +218,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3689D47F69BEB4835908C7AE /* ContentView.swift in Sources */,
+				338646F1F6C134E91A685BAD /* DebugOverlayView.swift in Sources */,
 				6D536E2192A344AAC54F74C5 /* MyDailySoundtrackApp.swift in Sources */,
+				1DD6468306FA5145D3D6DB3C /* OnboardingStore.swift in Sources */,
+				7C621B324C672CDEF309933C /* OnboardingView.swift in Sources */,
+				C62E7489EFCEA73D4746969B /* PermissionGuidePlaceholder.swift in Sources */,
+				99E35A137C43E4ACE0A28ED5 /* PermissionGuideView.swift in Sources */,
+				FD54541FB8178C1E4BF6DB61 /* PermissionStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
