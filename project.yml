@@ -10,7 +10,7 @@ configs:
   Release: release
 settings:
   base:
-    SWIFT_VERSION: 6.0
+    SWIFT_VERSION: 5.0
     IPHONEOS_DEPLOYMENT_TARGET: 17.0
     PRODUCT_BUNDLE_IDENTIFIER: com.hiroaki.MyDailySoundtrack
     DEVELOPMENT_TEAM: ""
@@ -31,7 +31,7 @@ targets:
       base:
         INFOPLIST_FILE: App/Supporting/Info.plist
         PRODUCT_NAME: MyDailySoundtrack
-        SWIFT_VERSION: 6.0
+        SWIFT_VERSION: 5.0
     dependencies:
       - package: StateObservationKit
   MyDailySoundtrackTests:
