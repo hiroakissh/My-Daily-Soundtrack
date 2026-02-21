@@ -9,6 +9,7 @@ platform :ios do
       project: "MyDailySoundtrack.xcodeproj",
       scheme: "MyDailySoundtrack",
       clean: true,
+      skip_detect_devices: true,
       derived_data_path: derived_data,
       cloned_source_packages_path: File.join(derived_data, "SourcePackages"),
       destination: "platform=iOS Simulator,name=#{simulator_name},OS=latest",

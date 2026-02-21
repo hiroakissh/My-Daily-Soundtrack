@@ -19,13 +19,15 @@ jobs:
         run: xcodebuild -list -project MyDailySoundtrack.xcodeproj | grep -q "MyDailySoundtrack"
       - name: List simulators
         run: xcrun simctl list devices
+      - name: List available simulators
+        run: xcrun simctl list devices available
       - name: Select simulator
         run: |
-          if xcrun simctl list devices | grep -q "iPhone 15 ("; then
+          if xcrun simctl list devices available | grep -q "iPhone 15 ("; then
             echo "SIMULATOR_NAME=iPhone 15" >> "$GITHUB_ENV"
-          elif xcrun simctl list devices | grep -q "iPhone 14 ("; then
+          elif xcrun simctl list devices available | grep -q "iPhone 14 ("; then
             echo "SIMULATOR_NAME=iPhone 14" >> "$GITHUB_ENV"
-          elif xcrun simctl list devices | grep -q "iPhone 13 ("; then
+          elif xcrun simctl list devices available | grep -q "iPhone 13 ("; then
             echo "SIMULATOR_NAME=iPhone 13" >> "$GITHUB_ENV"
           else
             echo "No supported iPhone simulator found." >&2
@@ -33,7 +35,7 @@ jobs:
             exit 1
           fi
       - name: Validate simulator selection
-        run: xcrun simctl list devices | grep -q "${SIMULATOR_NAME} ("
+        run: xcrun simctl list devices available | grep -q "${SIMULATOR_NAME} ("
       - uses: actions/cache@v4
         with:
           path: DerivedData/SourcePackages
