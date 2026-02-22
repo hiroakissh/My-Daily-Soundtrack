@@ -13,6 +13,10 @@ jobs:
         with:
           ruby-version: "3.2"
           bundler-cache: true
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Regenerate Xcode project
+        run: xcodegen generate
       - name: List schemes
         run: xcodebuild -list -project MyDailySoundtrack.xcodeproj
       - name: Validate scheme
