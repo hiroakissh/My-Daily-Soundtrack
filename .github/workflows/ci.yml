@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-test:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+      - name: Show installed Xcode versions
+        run: ls -1 /Applications | grep '^Xcode' || true
+      - name: Show selected Xcode
+        run: xcodebuild -version
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Regenerate Xcode project
+        run: xcodegen generate
+      - name: List schemes
+        run: xcodebuild -list -project MyDailySoundtrack.xcodeproj
+      - name: Validate scheme
+        run: xcodebuild -list -project MyDailySoundtrack.xcodeproj | grep -q "MyDailySoundtrack"
+      - name: List simulators
+        run: xcrun simctl list devices
+      - name: List available simulators
+        run: xcrun simctl list devices available
+      - name: Select simulator
+        run: |
+          if xcrun simctl list devices available | grep -q "iPhone 15 ("; then
+            echo "SIMULATOR_NAME=iPhone 15" >> "$GITHUB_ENV"
+          elif xcrun simctl list devices available | grep -q "iPhone 14 ("; then
+            echo "SIMULATOR_NAME=iPhone 14" >> "$GITHUB_ENV"
+          elif xcrun simctl list devices available | grep -q "iPhone 13 ("; then
+            echo "SIMULATOR_NAME=iPhone 13" >> "$GITHUB_ENV"
+          else
+            echo "No supported iPhone simulator found." >&2
+            xcrun simctl list devices
+            exit 1
+          fi
+      - name: Validate simulator selection
+        run: xcrun simctl list devices available | grep -q "${SIMULATOR_NAME} ("
+      - uses: actions/cache@v4
+        with:
+          path: DerivedData/SourcePackages
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/project.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+      - name: Run tests
+        run: bundle exec fastlane ios ci
