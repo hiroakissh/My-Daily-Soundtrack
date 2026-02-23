@@ -13,6 +13,10 @@ jobs:
         with:
           ruby-version: "3.2"
           bundler-cache: true
+      - name: Show installed Xcode versions
+        run: ls -1 /Applications | grep '^Xcode' || true
+      - name: Show selected Xcode
+        run: xcodebuild -version
       - name: Install XcodeGen
         run: brew install xcodegen
       - name: Regenerate Xcode project
