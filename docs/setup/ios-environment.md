@@ -1,9 +1,9 @@
-# iOS 開発環境セットアップ（Xcode 26 / iOS 26 以降）
+# iOS 開発環境セットアップ（Xcode 26 / iOS 17 以降）
 
 ## 必要条件
 - macOS 最新版推奨（Apple Silicon 対応）。
 - Xcode 26 以上（App Store 版または Apple Developer からダウンロード）。
-- iOS 26.0 以上で動作する実機（開発用プロビジョニングを設定）。
+- iOS 17.0 以上で動作する実機（開発用プロビジョニングを設定）。
 - Apple Developer アカウントを Xcode にサインイン済み。
 - （任意）Homebrew で `git`, `swiftlint` などを管理。
 
@@ -31,7 +31,7 @@
    - Interface: SwiftUI、Language: Swift。
    - Product Name: `My Daily Soundtrack`。
    - Team: 自分の Apple ID チームを選択。
-   - Targets: iOS Deployment Target を 26.0 に設定。
+   - Targets: iOS Deployment Target を 17.0 に設定。
    - 生成した `.xcodeproj` または `.xcworkspace` をこのリポジトリ直下に保存。
 
 5. **パッケージ追加（StateObservationKit）**
@@ -46,12 +46,12 @@
    - Motion & Fitness: `Privacy - Motion Usage Description` を Info.plist に記載。
 
 7. **ビルド設定**
-   - iOS Deployment Target: 26.0。
-- Swift 言語バージョン: Swift 6.0 以上（Xcode 26 標準）。
+   - iOS Deployment Target: 17.0。
+   - Swift 言語バージョン: Swift 6.0 以上（Xcode 26 標準）。
    - Debug で `OTHER_SWIFT_FLAGS` に `-warnings-as-errors` を入れる場合はチーム方針に合わせる。
 
 8. **ラン構成**
-   - シミュレータ: iOS 26 以上のデバイスを選択。
+   - シミュレータ: iOS 17 以上のデバイスを選択。
    - 実機テスト: 開発者証明書とプロビジョニングを設定。Run で位置/モーション権限を許可。
 
 9. **動作確認（初回）**

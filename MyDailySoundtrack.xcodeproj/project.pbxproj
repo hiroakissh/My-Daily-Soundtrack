@@ -7,15 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08EFB28FFE8494A3DBA82A9E /* ContextProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759636777A149F60D7BE66F3 /* ContextProviders.swift */; };
+		0F0675ED8A07EA50067C0ADF /* ContextModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58151DD23F1C96312216B511 /* ContextModels.swift */; };
 		1DD6468306FA5145D3D6DB3C /* OnboardingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A7F5FC35C4561CD39593CB /* OnboardingStore.swift */; };
+		227B910360A4804515087FDC /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706FD1E8421CBD35EC26BF70 /* WeatherProvider.swift */; };
+		299394FB2B009198052BA7BD /* GeoTagStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B89B6ED479A3B81D6A8CF /* GeoTagStore.swift */; };
+		31F9E3774A38D43B87BECFCB /* ErrorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9DAF3C49E889E28C4F6705 /* ErrorStore.swift */; };
+		328F70D8347FAF4A37415298 /* ErrorModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9208D6036B159637F6CA9121 /* ErrorModalView.swift */; };
 		338646F1F6C134E91A685BAD /* DebugOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEBAB3CB8DC6B7BA67D16E7 /* DebugOverlayView.swift */; };
 		3689D47F69BEB4835908C7AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D695281961CFA51FBC5B2 /* ContentView.swift */; };
+		45FF702861890FE34F456115 /* OpeningModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B49141814FA879FD689C659 /* OpeningModels.swift */; };
+		4BFA5649121E785B0B38E958 /* SceneScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC26F1DE4D1840FBDF0E927 /* SceneScoreTests.swift */; };
+		4FCE24CD6B62D7CE9A3CDE5F /* ContextAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B2EC8B94C79DDA92FD8C6 /* ContextAggregator.swift */; };
+		528A9A68DBE13C3C500BCC67 /* SceneModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3294C702FC47DB38207DE3 /* SceneModels.swift */; };
+		5E51673A9BB68031B71BE028 /* PlaybackStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C14055DB807F5E2056F01A /* PlaybackStore.swift */; };
+		613CAC6DD48EA4AC5189E50B /* MainPlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAE2F6A5164F5B64167589C /* MainPlaybackView.swift */; };
+		62D901BC4F73B3BA3669AFA1 /* ScorePlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F93654EDA10ACD421336B /* ScorePlanner.swift */; };
 		6D536E2192A344AAC54F74C5 /* MyDailySoundtrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631CF5A7D2F2394CD6F82D8 /* MyDailySoundtrackApp.swift */; };
 		7C621B324C672CDEF309933C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01957E0D5A871A913A445886 /* OnboardingView.swift */; };
 		7C719922E048FCC6AFBE6B96 /* StateObservationKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7E5E716BF574F6CA56F0E785 /* StateObservationKit */; };
+		837E1E3BD8BCE88DA3C6A81C /* CoreLocationGeoTagProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1654167FB61BDA07690E7 /* CoreLocationGeoTagProvider.swift */; };
+		882354EB7D1AC5B8DD9E7227 /* CoreMotionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B776630C8EE26F753750FE3F /* CoreMotionProvider.swift */; };
+		8B463283655DDC63BEFCAA16 /* SceneClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F87ACDFFC2736E020BB41DD /* SceneClassifier.swift */; };
+		979847A0D4AAB3E990E7D765 /* AudioRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B562B3730961C8CA38601D1 /* AudioRenderer.swift */; };
+		985CA74D776C2CD8E7842ECC /* PlaybackStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F88C95555E3F89D6B28695F /* PlaybackStoreTests.swift */; };
 		99E35A137C43E4ACE0A28ED5 /* PermissionGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208350171A6C99472AAE49A4 /* PermissionGuideView.swift */; };
-		C62E7489EFCEA73D4746969B /* PermissionGuidePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D490A5C5D6EE9A974993C146 /* PermissionGuidePlaceholder.swift */; };
+		A71FC2192F1FF91C3E3F29B0 /* OpeningDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E7A8A2EDFC550461E4B3F5 /* OpeningDirector.swift */; };
+		AAB95B8A0233BC174890B170 /* ScorePlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F019AF30324D115228B19 /* ScorePlannerTests.swift */; };
+		AB70ACD90BDF77FDCBADA933 /* SceneClassifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB0AB389B7946F401CAFF47 /* SceneClassifierTests.swift */; };
 		CAD2AD3F03D81E6C059F3D83 /* MyDailySoundtrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8666213CD1D05EAFB833E62 /* MyDailySoundtrackTests.swift */; };
+		D08118FF5550E9F95B6845C9 /* OpeningSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05AE31AE59B9FF0041223FE /* OpeningSceneView.swift */; };
+		D29305DE3F300768412AD1F5 /* GeoTagProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC2A7010F9D623A37DD1AD3 /* GeoTagProviderTests.swift */; };
+		D41619C5F266BB3DAFDC3B83 /* GeoTagProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDC4C0E780E9B5A8392B814 /* GeoTagProvider.swift */; };
+		E25A704E8B649E4DFE1320D1 /* SoundtrackSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96A34B6A89A32C2BCEF5F11 /* SoundtrackSessionStore.swift */; };
+		ED91DA457E390CD0D0357E02 /* ScoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6D4FF79D6203634CFEF422 /* ScoreModels.swift */; };
+		EDDF733E572DA36C2A9BCE50 /* OnboardingPermissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133AEA10ADF9970A2C268243 /* OnboardingPermissionTests.swift */; };
 		FD54541FB8178C1E4BF6DB61 /* PermissionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4037FA1072ED5590798D675C /* PermissionStore.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,17 +56,43 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		015F019AF30324D115228B19 /* ScorePlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorePlannerTests.swift; sourceTree = "<group>"; };
 		01957E0D5A871A913A445886 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		133AEA10ADF9970A2C268243 /* OnboardingPermissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionTests.swift; sourceTree = "<group>"; };
+		1B562B3730961C8CA38601D1 /* AudioRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRenderer.swift; sourceTree = "<group>"; };
+		1BDC4C0E780E9B5A8392B814 /* GeoTagProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTagProvider.swift; sourceTree = "<group>"; };
 		208350171A6C99472AAE49A4 /* PermissionGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionGuideView.swift; sourceTree = "<group>"; };
+		283B89B6ED479A3B81D6A8CF /* GeoTagStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTagStore.swift; sourceTree = "<group>"; };
 		310D695281961CFA51FBC5B2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3B49141814FA879FD689C659 /* OpeningModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningModels.swift; sourceTree = "<group>"; };
+		3F9DAF3C49E889E28C4F6705 /* ErrorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStore.swift; sourceTree = "<group>"; };
 		4037FA1072ED5590798D675C /* PermissionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionStore.swift; sourceTree = "<group>"; };
+		47E7A8A2EDFC550461E4B3F5 /* OpeningDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningDirector.swift; sourceTree = "<group>"; };
+		58151DD23F1C96312216B511 /* ContextModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextModels.swift; sourceTree = "<group>"; };
+		5F88C95555E3F89D6B28695F /* PlaybackStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackStoreTests.swift; sourceTree = "<group>"; };
 		6CEBAB3CB8DC6B7BA67D16E7 /* DebugOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugOverlayView.swift; sourceTree = "<group>"; };
+		706FD1E8421CBD35EC26BF70 /* WeatherProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProvider.swift; sourceTree = "<group>"; };
+		759636777A149F60D7BE66F3 /* ContextProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProviders.swift; sourceTree = "<group>"; };
+		7EB0AB389B7946F401CAFF47 /* SceneClassifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneClassifierTests.swift; sourceTree = "<group>"; };
+		7EC26F1DE4D1840FBDF0E927 /* SceneScoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneScoreTests.swift; sourceTree = "<group>"; };
 		88CF462AFDA4A2C59EF454BF /* MyDailySoundtrackTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MyDailySoundtrackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D490A5C5D6EE9A974993C146 /* PermissionGuidePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionGuidePlaceholder.swift; sourceTree = "<group>"; };
+		9208D6036B159637F6CA9121 /* ErrorModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModalView.swift; sourceTree = "<group>"; };
+		9F2B2EC8B94C79DDA92FD8C6 /* ContextAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextAggregator.swift; sourceTree = "<group>"; };
+		9F87ACDFFC2736E020BB41DD /* SceneClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneClassifier.swift; sourceTree = "<group>"; };
+		AA6D4FF79D6203634CFEF422 /* ScoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreModels.swift; sourceTree = "<group>"; };
+		AF3294C702FC47DB38207DE3 /* SceneModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneModels.swift; sourceTree = "<group>"; };
+		B776630C8EE26F753750FE3F /* CoreMotionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMotionProvider.swift; sourceTree = "<group>"; };
 		D631CF5A7D2F2394CD6F82D8 /* MyDailySoundtrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDailySoundtrackApp.swift; sourceTree = "<group>"; };
+		D6C1654167FB61BDA07690E7 /* CoreLocationGeoTagProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationGeoTagProvider.swift; sourceTree = "<group>"; };
 		D7A7F5FC35C4561CD39593CB /* OnboardingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStore.swift; sourceTree = "<group>"; };
+		DFAE2F6A5164F5B64167589C /* MainPlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPlaybackView.swift; sourceTree = "<group>"; };
+		E28F93654EDA10ACD421336B /* ScorePlanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorePlanner.swift; sourceTree = "<group>"; };
+		E7C14055DB807F5E2056F01A /* PlaybackStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackStore.swift; sourceTree = "<group>"; };
 		E8666213CD1D05EAFB833E62 /* MyDailySoundtrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDailySoundtrackTests.swift; sourceTree = "<group>"; };
 		EBBC36E646E3E1D97F177964 /* MyDailySoundtrack.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MyDailySoundtrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC2A7010F9D623A37DD1AD3 /* GeoTagProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTagProviderTests.swift; sourceTree = "<group>"; };
+		F05AE31AE59B9FF0041223FE /* OpeningSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningSceneView.swift; sourceTree = "<group>"; };
+		F96A34B6A89A32C2BCEF5F11 /* SoundtrackSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundtrackSessionStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +107,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D909830BC1D96820117F08A /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				9208D6036B159637F6CA9121 /* ErrorModalView.swift */,
+				3F9DAF3C49E889E28C4F6705 /* ErrorStore.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		23C613EFBEA00C08AC10257B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DFAE2F6A5164F5B64167589C /* MainPlaybackView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		2C59E2CF71988BE0DAD62A0F /* Permission */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +133,42 @@
 			path = Permission;
 			sourceTree = "<group>";
 		};
+		478E1CCA09F8CAC0FD38AF59 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				F96A34B6A89A32C2BCEF5F11 /* SoundtrackSessionStore.swift */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		6537B048F7859154F2FC6B90 /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				AA6D4FF79D6203634CFEF422 /* ScoreModels.swift */,
+				E28F93654EDA10ACD421336B /* ScorePlanner.swift */,
+			);
+			path = Score;
+			sourceTree = "<group>";
+		};
+		72E7C30A0F8D1A6C4CA60E57 /* Playback */ = {
+			isa = PBXGroup;
+			children = (
+				1B562B3730961C8CA38601D1 /* AudioRenderer.swift */,
+				E7C14055DB807F5E2056F01A /* PlaybackStore.swift */,
+			);
+			path = Playback;
+			sourceTree = "<group>";
+		};
+		7E1608019C799EDC9FB448C8 /* Opening */ = {
+			isa = PBXGroup;
+			children = (
+				47E7A8A2EDFC550461E4B3F5 /* OpeningDirector.swift */,
+				3B49141814FA879FD689C659 /* OpeningModels.swift */,
+				F05AE31AE59B9FF0041223FE /* OpeningSceneView.swift */,
+			);
+			path = Opening;
+			sourceTree = "<group>";
+		};
 		918A7D0C299FDAFA5AD4B083 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +176,26 @@
 				88CF462AFDA4A2C59EF454BF /* MyDailySoundtrackTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		996EB39EC85D506169F1B4D1 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				9F2B2EC8B94C79DDA92FD8C6 /* ContextAggregator.swift */,
+				58151DD23F1C96312216B511 /* ContextModels.swift */,
+				759636777A149F60D7BE66F3 /* ContextProviders.swift */,
+				9F87ACDFFC2736E020BB41DD /* SceneClassifier.swift */,
+				AF3294C702FC47DB38207DE3 /* SceneModels.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		9DBF8F563B6D0CD2FE661C3E /* Motion */ = {
+			isa = PBXGroup;
+			children = (
+				B776630C8EE26F753750FE3F /* CoreMotionProvider.swift */,
+			);
+			path = Motion;
 			sourceTree = "<group>";
 		};
 		9DC1513ED2CA4708C80CD388 /* Debug */ = {
@@ -90,6 +215,16 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		BEC42A9CE8A5B89D1BB52E98 /* Geo */ = {
+			isa = PBXGroup;
+			children = (
+				D6C1654167FB61BDA07690E7 /* CoreLocationGeoTagProvider.swift */,
+				1BDC4C0E780E9B5A8392B814 /* GeoTagProvider.swift */,
+				283B89B6ED479A3B81D6A8CF /* GeoTagStore.swift */,
+			);
+			path = Geo;
+			sourceTree = "<group>";
+		};
 		C2AB07BE3C29572201A5E475 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,7 +237,13 @@
 		C88300419FF6CD6AD9EF9B05 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				EDC2A7010F9D623A37DD1AD3 /* GeoTagProviderTests.swift */,
 				E8666213CD1D05EAFB833E62 /* MyDailySoundtrackTests.swift */,
+				133AEA10ADF9970A2C268243 /* OnboardingPermissionTests.swift */,
+				5F88C95555E3F89D6B28695F /* PlaybackStoreTests.swift */,
+				7EB0AB389B7946F401CAFF47 /* SceneClassifierTests.swift */,
+				7EC26F1DE4D1840FBDF0E927 /* SceneScoreTests.swift */,
+				015F019AF30324D115228B19 /* ScorePlannerTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -115,15 +256,32 @@
 			);
 			sourceTree = "<group>";
 		};
+		EFAD1CC52C36D422E4B1B713 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				706FD1E8421CBD35EC26BF70 /* WeatherProvider.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
 		F3A0FD1DEE763B14FB28AAE4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				996EB39EC85D506169F1B4D1 /* Context */,
 				9DC1513ED2CA4708C80CD388 /* Debug */,
+				0D909830BC1D96820117F08A /* Error */,
+				BEC42A9CE8A5B89D1BB52E98 /* Geo */,
+				23C613EFBEA00C08AC10257B /* Main */,
+				9DBF8F563B6D0CD2FE661C3E /* Motion */,
 				C2AB07BE3C29572201A5E475 /* Onboarding */,
+				7E1608019C799EDC9FB448C8 /* Opening */,
 				2C59E2CF71988BE0DAD62A0F /* Permission */,
+				72E7C30A0F8D1A6C4CA60E57 /* Playback */,
+				6537B048F7859154F2FC6B90 /* Score */,
+				478E1CCA09F8CAC0FD38AF59 /* Session */,
+				EFAD1CC52C36D422E4B1B713 /* Weather */,
 				310D695281961CFA51FBC5B2 /* ContentView.swift */,
 				D631CF5A7D2F2394CD6F82D8 /* MyDailySoundtrackApp.swift */,
-				D490A5C5D6EE9A974993C146 /* PermissionGuidePlaceholder.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -209,7 +367,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D29305DE3F300768412AD1F5 /* GeoTagProviderTests.swift in Sources */,
 				CAD2AD3F03D81E6C059F3D83 /* MyDailySoundtrackTests.swift in Sources */,
+				EDDF733E572DA36C2A9BCE50 /* OnboardingPermissionTests.swift in Sources */,
+				985CA74D776C2CD8E7842ECC /* PlaybackStoreTests.swift in Sources */,
+				AB70ACD90BDF77FDCBADA933 /* SceneClassifierTests.swift in Sources */,
+				4BFA5649121E785B0B38E958 /* SceneScoreTests.swift in Sources */,
+				AAB95B8A0233BC174890B170 /* ScorePlannerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,14 +381,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				979847A0D4AAB3E990E7D765 /* AudioRenderer.swift in Sources */,
 				3689D47F69BEB4835908C7AE /* ContentView.swift in Sources */,
+				4FCE24CD6B62D7CE9A3CDE5F /* ContextAggregator.swift in Sources */,
+				0F0675ED8A07EA50067C0ADF /* ContextModels.swift in Sources */,
+				08EFB28FFE8494A3DBA82A9E /* ContextProviders.swift in Sources */,
+				837E1E3BD8BCE88DA3C6A81C /* CoreLocationGeoTagProvider.swift in Sources */,
+				882354EB7D1AC5B8DD9E7227 /* CoreMotionProvider.swift in Sources */,
 				338646F1F6C134E91A685BAD /* DebugOverlayView.swift in Sources */,
+				328F70D8347FAF4A37415298 /* ErrorModalView.swift in Sources */,
+				31F9E3774A38D43B87BECFCB /* ErrorStore.swift in Sources */,
+				D41619C5F266BB3DAFDC3B83 /* GeoTagProvider.swift in Sources */,
+				299394FB2B009198052BA7BD /* GeoTagStore.swift in Sources */,
+				613CAC6DD48EA4AC5189E50B /* MainPlaybackView.swift in Sources */,
 				6D536E2192A344AAC54F74C5 /* MyDailySoundtrackApp.swift in Sources */,
 				1DD6468306FA5145D3D6DB3C /* OnboardingStore.swift in Sources */,
 				7C621B324C672CDEF309933C /* OnboardingView.swift in Sources */,
-				C62E7489EFCEA73D4746969B /* PermissionGuidePlaceholder.swift in Sources */,
+				A71FC2192F1FF91C3E3F29B0 /* OpeningDirector.swift in Sources */,
+				45FF702861890FE34F456115 /* OpeningModels.swift in Sources */,
+				D08118FF5550E9F95B6845C9 /* OpeningSceneView.swift in Sources */,
 				99E35A137C43E4ACE0A28ED5 /* PermissionGuideView.swift in Sources */,
 				FD54541FB8178C1E4BF6DB61 /* PermissionStore.swift in Sources */,
+				5E51673A9BB68031B71BE028 /* PlaybackStore.swift in Sources */,
+				8B463283655DDC63BEFCAA16 /* SceneClassifier.swift in Sources */,
+				528A9A68DBE13C3C500BCC67 /* SceneModels.swift in Sources */,
+				ED91DA457E390CD0D0357E02 /* ScoreModels.swift in Sources */,
+				62D901BC4F73B3BA3669AFA1 /* ScorePlanner.swift in Sources */,
+				E25A704E8B649E4DFE1320D1 /* SoundtrackSessionStore.swift in Sources */,
+				227B910360A4804515087FDC /* WeatherProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,66 +2,66 @@ import XCTest
 @testable import MyDailySoundtrack
 
 final class ScorePlannerTests: XCTestCase {
-    func testCadenceClampsToProfileRange() {
-        let planner = ScorePlanner()
-        let start = Date(timeIntervalSince1970: 0)
-        let context = makeContext(activity: .walking, cadence: 500)
+    func testCadenceBoostIsClamped() {
+        let planner = makePlanner()
 
-        let plan = planner.plan(scene: .commuteHurry, context: context, now: start)
+        let plan = planner.plan(scene: .commuteHurry, motion: .walking, cadence: 500)
 
-        XCTAssertEqual(plan.baseBPM, 132, accuracy: 0.01)
+        XCTAssertEqual(plan.baseBPM, 126, accuracy: 0.01)
+        XCTAssertEqual(plan.beatLevel, 1, accuracy: 0.01)
     }
 
-    func testStoppedMotionFadesBeatAndBoostsPad() {
-        let planner = ScorePlanner()
-        let start = Date(timeIntervalSince1970: 0)
-        let context = makeContext(activity: .stopped, cadence: 0)
+    func testIdleMotionReducesBeatAndRaisesPadAndReverb() {
+        let planner = makePlanner()
 
-        let initialPlan = planner.plan(scene: .sunnyWalk, context: context, now: start)
-        let fadedPlan = planner.plan(scene: .sunnyWalk, context: context, now: start.addingTimeInterval(3))
+        let plan = planner.plan(scene: .sunnyWalk, motion: .idle, cadence: nil)
 
-        XCTAssertGreaterThan(initialPlan.level(for: .beat), 0)
-        XCTAssertEqual(fadedPlan.level(for: .beat), 0, accuracy: 0.01)
-        XCTAssertEqual(fadedPlan.level(for: .pad), initialPlan.level(for: .pad), accuracy: 0.01)
+        XCTAssertEqual(plan.padLevel, 0.55, accuracy: 0.01)
+        XCTAssertEqual(plan.beatLevel, 0.22, accuracy: 0.01)
+        XCTAssertEqual(plan.reverb, 0.55, accuracy: 0.01)
     }
 
-    func testSceneTransitionInterpolatesPlans() {
-        let planner = ScorePlanner()
-        let start = Date(timeIntervalSince1970: 0)
-        let context = makeContext(activity: .walking, cadence: 90)
+    func testRunningMotionAddsMoreRhythmicEnergyThanWalking() {
+        let planner = makePlanner()
 
-        let initial = planner.plan(scene: .sunnyWalk, context: context, now: start)
-        _ = planner.plan(scene: .rainyWalk, context: context, now: start.addingTimeInterval(1))
-        let blended = planner.plan(scene: .rainyWalk, context: context, now: start.addingTimeInterval(3))
+        let walking = planner.plan(scene: .sunnyWalk, motion: .walking, cadence: 120)
+        let running = planner.plan(scene: .sunnyWalk, motion: .running, cadence: 120)
 
-        let targetPlanner = ScorePlanner()
-        let target = targetPlanner.plan(scene: .rainyWalk, context: context, now: start)
-
-        XCTAssertLessThan(blended.baseBPM, initial.baseBPM)
-        XCTAssertGreaterThan(blended.baseBPM, target.baseBPM)
+        XCTAssertGreaterThan(running.beatLevel, walking.beatLevel)
+        XCTAssertGreaterThan(running.arpLevel, walking.arpLevel)
+        XCTAssertLessThan(running.reverb, walking.reverb)
     }
 
-    func testMorningIntroBuildScalesBeatAndArp() {
-        let planner = ScorePlanner()
-        let start = Date(timeIntervalSince1970: 0)
-        let context = makeContext(activity: .walking, cadence: 0)
-
-        let early = planner.plan(scene: .morningIntro, context: context, now: start)
-        XCTAssertEqual(early.level(for: .beat), 0, accuracy: 0.01)
-        XCTAssertEqual(early.level(for: .arp), 0, accuracy: 0.01)
-
-        let later = planner.plan(scene: .morningIntro, context: context, now: start.addingTimeInterval(45))
-        XCTAssertEqual(later.level(for: .beat), 0.15, accuracy: 0.01)
-        XCTAssertEqual(later.level(for: .arp), 0.175, accuracy: 0.01)
-    }
-
-    private func makeContext(activity: MotionState.Activity, cadence: Double) -> ContextSnapshot {
-        ContextSnapshot(
-            geoTag: .urban,
-            timeBand: .afternoon,
-            weather: WeatherState(condition: .sunny, temperature: 22, precipitation: 0),
-            motion: MotionState(activity: activity, speed: 1.2, cadence: cadence),
-            timestamp: Date()
-        )
+    private func makePlanner() -> ScorePlanner {
+        ScorePlanner(presets: [
+            SceneScorePreset(
+                scene: .commuteHurry,
+                plan: ScorePlan(
+                    padLevel: 0.4,
+                    arpLevel: 0.7,
+                    beatLevel: 0.9,
+                    fxLevel: 0.5,
+                    fieldNoiseLevel: 0.3,
+                    baseBPM: 120,
+                    tempoFollowRate: 0.6,
+                    filter: 0.75,
+                    reverb: 0.3
+                )
+            ),
+            SceneScorePreset(
+                scene: .sunnyWalk,
+                plan: ScorePlan(
+                    padLevel: 0.5,
+                    arpLevel: 0.3,
+                    beatLevel: 0.4,
+                    fxLevel: 0.2,
+                    fieldNoiseLevel: 0.2,
+                    baseBPM: 100,
+                    tempoFollowRate: 0.5,
+                    filter: 0.5,
+                    reverb: 0.5
+                )
+            )
+        ])
     }
 }

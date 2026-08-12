@@ -39,11 +39,26 @@ targets:
     platform: iOS
     sources:
       - path: App/Tests
-        excludes:
-          - SceneClassifierTests.swift
-          - ScorePlannerTests.swift
     settings:
       base:
         INFOPLIST_FILE: App/Supporting/Tests.plist
     dependencies:
       - target: MyDailySoundtrack
+schemes:
+  MyDailySoundtrack:
+    build:
+      targets:
+        MyDailySoundtrack: all
+        MyDailySoundtrackTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - MyDailySoundtrackTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release

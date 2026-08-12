@@ -34,7 +34,7 @@ struct PermissionGuideView: View {
             )
             .ignoresSafeArea()
         )
-        .onChange(of: store.status) { newValue in
+        .onChange(of: store.status) { _, newValue in
             if newValue == .granted {
                 onGranted()
             }

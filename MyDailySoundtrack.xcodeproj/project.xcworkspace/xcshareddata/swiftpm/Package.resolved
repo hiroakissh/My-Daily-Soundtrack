@@ -1,0 +1,15 @@
+{
+  "originHash" : "ceca74e406e8e5ad7a24d181d29effeb1007e520a5b58a1d6069fd9b13ab3895",
+  "pins" : [
+    {
+      "identity" : "stateobservationkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hiroakissh/StateObservationKit",
+      "state" : {
+        "revision" : "d884393d1e95dadf4b1b19c8547fb5712f817f9a",
+        "version" : "0.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}

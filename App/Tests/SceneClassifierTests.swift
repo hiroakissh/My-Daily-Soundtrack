@@ -2,65 +2,77 @@ import XCTest
 @testable import MyDailySoundtrack
 
 final class SceneClassifierTests: XCTestCase {
-    func testDoubleHitLocksScene() {
+    func testDoubleHitLocksSceneAndExposesCandidateDuringLock() {
         let start = Date(timeIntervalSince1970: 0)
-        let classifier = SceneClassifier(startDate: start, lockDuration: 60, contextTimeout: 30, initialScene: .natureAmbient)
-        let context = makeContext(
-            geoTag: .urban,
-            timeBand: .afternoon,
-            weatherCondition: .sunny,
-            activity: .walking,
-            cadence: 90
-        )
+        let classifier = SceneClassifier(startDate: start, lockDuration: 60)
+        let sunnyWalk = makeSnapshot(weather: .clear, motion: .walking, cadence: 90)
 
-        let first = classifier.update(context: context, now: start.addingTimeInterval(5))
-        XCTAssertEqual(first.current, .natureAmbient)
+        let first = classifier.classify(snapshot: sunnyWalk, now: start.addingTimeInterval(5))
+        XCTAssertNil(first.current)
+        XCTAssertEqual(first.candidate, .sunnyWalk)
 
-        let second = classifier.update(context: context, now: start.addingTimeInterval(15))
+        let second = classifier.classify(snapshot: sunnyWalk, now: start.addingTimeInterval(15))
         XCTAssertEqual(second.current, .sunnyWalk)
-        XCTAssertNotNil(second.lockRemaining)
+        XCTAssertEqual(second.lockRemaining ?? -1, 60, accuracy: 0.01)
 
-        let rainyContext = makeContext(
-            geoTag: .urban,
-            timeBand: .afternoon,
-            weatherCondition: .rainy,
-            activity: .walking,
-            cadence: 80
-        )
-        let locked = classifier.update(context: rainyContext, now: start.addingTimeInterval(25))
+        let rainyWalk = makeSnapshot(weather: .rainy, motion: .walking, cadence: 80)
+        let locked = classifier.classify(snapshot: rainyWalk, now: start.addingTimeInterval(25))
         XCTAssertEqual(locked.current, .sunnyWalk)
+        XCTAssertEqual(locked.candidate, .rainyWalk)
     }
 
-    func testFallbackAfterTimeoutUsesLastSnapshot() {
+    func testMorningIntroExpiresBeforeCommuteRuleIsSelected() {
         let start = Date(timeIntervalSince1970: 0)
-        let classifier = SceneClassifier(startDate: start, lockDuration: 60, contextTimeout: 30, initialScene: .natureAmbient)
-        let context = makeContext(
-            geoTag: .urban,
-            timeBand: .evening,
-            weatherCondition: .sunny,
-            activity: .walking,
-            cadence: 80
+        let classifier = SceneClassifier(startDate: start, lockDuration: 60)
+        let commute = makeSnapshot(
+            geoTag: .station,
+            timeBand: .morning,
+            weather: .clear,
+            motion: .walking,
+            cadence: 120
         )
 
-        _ = classifier.update(context: context, now: start.addingTimeInterval(2))
+        let opening = classifier.classify(snapshot: commute, now: start.addingTimeInterval(1))
+        XCTAssertEqual(opening.candidate, .morningIntro)
 
-        let evaluation = classifier.update(context: nil, now: start.addingTimeInterval(40))
-        XCTAssertEqual(evaluation.current, .sunnyWalk)
-        XCTAssertNotNil(evaluation.lockRemaining)
+        let afterOpening = classifier.classify(snapshot: commute, now: start.addingTimeInterval(61))
+        XCTAssertNil(afterOpening.current)
+        XCTAssertEqual(afterOpening.candidate, .commuteHurry)
+
+        let confirmed = classifier.classify(snapshot: commute, now: start.addingTimeInterval(62))
+        XCTAssertEqual(confirmed.current, .commuteHurry)
     }
 
-    private func makeContext(
-        geoTag: GeoTag,
-        timeBand: TimeBand,
-        weatherCondition: WeatherState.Condition,
-        activity: MotionState.Activity,
-        cadence: Double
+    func testLockExpiryRequiresAnotherDoubleHit() {
+        let start = Date(timeIntervalSince1970: 0)
+        let classifier = SceneClassifier(startDate: start, lockDuration: 60)
+        let sunnyWalk = makeSnapshot(weather: .clear, motion: .walking, cadence: 90)
+        let rainyWalk = makeSnapshot(weather: .rainy, motion: .walking, cadence: 80)
+
+        _ = classifier.classify(snapshot: sunnyWalk, now: start)
+        _ = classifier.classify(snapshot: sunnyWalk, now: start.addingTimeInterval(1))
+
+        let firstAfterLock = classifier.classify(snapshot: rainyWalk, now: start.addingTimeInterval(61))
+        XCTAssertEqual(firstAfterLock.current, .sunnyWalk)
+        XCTAssertEqual(firstAfterLock.candidate, .rainyWalk)
+
+        let secondAfterLock = classifier.classify(snapshot: rainyWalk, now: start.addingTimeInterval(62))
+        XCTAssertEqual(secondAfterLock.current, .rainyWalk)
+    }
+
+    private func makeSnapshot(
+        geoTag: GeoTag = .urban,
+        timeBand: TimeBand = .daytime,
+        weather: WeatherState,
+        motion: MotionState,
+        cadence: Int?
     ) -> ContextSnapshot {
         ContextSnapshot(
             geoTag: geoTag,
             timeBand: timeBand,
-            weather: WeatherState(condition: weatherCondition, temperature: 18, precipitation: 0.1),
-            motion: MotionState(activity: activity, speed: 1.2, cadence: cadence),
+            weather: weather,
+            motion: motion,
+            cadence: cadence,
             timestamp: Date()
         )
     }
