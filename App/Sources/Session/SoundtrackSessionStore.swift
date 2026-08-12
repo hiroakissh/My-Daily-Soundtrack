@@ -44,6 +44,10 @@ final class SoundtrackSessionStore: ObservableObject {
         (classification.current ?? classification.candidate ?? .natureAmbient).rawValue
     }
 
+    var scorePlanPublisher: AnyPublisher<ScorePlan, Never> {
+        $scorePlan.eraseToAnyPublisher()
+    }
+
     func start() {
         guard !isRunning else { return }
         isRunning = true

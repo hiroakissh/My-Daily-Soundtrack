@@ -25,11 +25,18 @@ final class PlaybackStore: ObservableObject {
 
     private let renderer: any AudioRendering
     private var currentTag: GeoTag
+    private var currentPlan: ScorePlan
     private var cancellables = Set<AnyCancellable>()
 
-    init(renderer: some AudioRendering, initialTag: GeoTag = .urban, tagPublisher: AnyPublisher<GeoTag, Never>? = nil) {
+    init(
+        renderer: some AudioRendering,
+        initialTag: GeoTag = .urban,
+        initialPlan: ScorePlan = .zero,
+        tagPublisher: AnyPublisher<GeoTag, Never>? = nil
+    ) {
         self.renderer = renderer
         self.currentTag = initialTag
+        self.currentPlan = initialPlan
         if let tagPublisher {
             bindTagPublisher(tagPublisher)
         }
@@ -44,10 +51,32 @@ final class PlaybackStore: ObservableObject {
                 self.currentTag = tag
                 Task { @MainActor [weak self] in
                     guard let self else { return }
-                    await self.renderer.update(tag: tag)
+                    await self.renderer.update(tag: tag, plan: self.currentPlan)
                 }
             }
             .store(in: &cancellables)
+    }
+
+    func bindPlanPublisher(_ publisher: AnyPublisher<ScorePlan, Never>) {
+        publisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] plan in
+                guard let self else { return }
+                self.currentPlan = plan
+                Task { @MainActor [weak self] in
+                    guard let self else { return }
+                    await self.renderer.update(tag: self.currentTag, plan: plan)
+                }
+            }
+            .store(in: &cancellables)
+    }
+
+    func setPlan(_ plan: ScorePlan) {
+        currentPlan = plan
+        Task { @MainActor [weak self] in
+            guard let self else { return }
+            await self.renderer.update(tag: self.currentTag, plan: plan)
+        }
     }
 
     func start() {
@@ -56,7 +85,7 @@ final class PlaybackStore: ObservableObject {
         Task { @MainActor [weak self] in
             guard let self else { return }
             do {
-                try await renderer.start(tag: currentTag)
+                try await renderer.start(tag: currentTag, plan: currentPlan)
                 self.state = .playing
             } catch {
                 self.state = .error("オーディオの初期化に失敗しました")

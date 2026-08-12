@@ -99,6 +99,7 @@ struct ContentView: View {
         #endif
         .task {
             playbackStore.bindTagPublisher(session.geoTagStore.tagPublisher)
+            playbackStore.bindPlanPublisher(session.scorePlanPublisher)
             _ = await session.geoTagStore.start()
             session.start()
             if shouldPlayOpening {
